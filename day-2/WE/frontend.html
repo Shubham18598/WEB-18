@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <link rel="stylesheet" href="comman.css">
+    
+    <style> #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 20px;
+      }
+      h3 + img {
+        height: 200px;
+      }
+      img+img{
+          height: 40px;
+        margin-left: 30px;
+      }
+      div> h3,p{
+        text-align: center;
+      }
+        </style>
+</head>
+<body>
+  <div id="navbar">
+    <div><a href="backend.html">Backend</a></div>
+    <div><a href="frontend.html">Frontend</a></div>
+</div>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+   var investorsArr= JSON.parse(localStorage.getItem("investorsData"))
+
+    investorsArr.forEach(function(elem){
+
+        var box=document.createElement("div")
+
+        var Name=document.createElement("h3")
+        Name.innerText=elem.investorName
+        var img=document.createElement("img")
+        img.setAttribute("src",elem.investorImg)
+        var logo=document.createElement("img")
+        logo.setAttribute("src",elem.investorCompanyLogo)
+        var role=document.createElement("p")
+        role.innerText=elem.investorRole
+
+        box.append(Name,img,logo,role)
+
+        document.querySelector("#container").append(box)
+        
+    })
+</script>
